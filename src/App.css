@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center; /* Center items vertically */
+  background-color: #1a1a1a;
+}
+
+.sidebar {
+  padding: 1rem;
+  flex: 1;
+  max-width: 17%;
+  background-color: #1e1e1e;
+}
+
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.main-content {
+  flex: 3;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Add this to make children take full height */
+}
+
+.main-content-inner {
+  flex: 1; /* Use flex: 1 to make it take remaining space */
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
+  gap: 1rem;
+  overflow-y: auto; /* Add this to enable scrolling if content overflows */
+  padding: 0.5rem;
+}
+
+.page-title {
+  text-align: left; /* Align the title text to the left */
+  margin-bottom: 0; /* Remove margin-bottom to reduce spacing */
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-around; /* Distribute items evenly */
+  align-items: center; /* Center items vertically */
+  height: 80%; /* Set height to 80% of header */
+}
+
+.header-content-item {
+  margin-right: 0.25rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  background-color: #1e1e1e;
+}
+
+.sidebar-content-item {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+.sidebar-content-item:hover,
+.header-content-item:hover {
+  background-color: #646cff;
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .page-layout {
+    flex-direction: column; /* Stack sidebar below main content, header remains at the top */
+  }
+
+  .sidebar {
+    max-width: 100%; /* Make the sidebar take full width on small screens */
+    flex: none; /* Remove flex to prevent sidebar from pushing main content */
+  }
+
+  .sidebar-content-item,
+  .header-content-item {
+    width: auto; /* Reset width for items on smaller screens */
+    margin-bottom: 0.3rem; /* Adjust margin for smaller spacing */
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center; /* Center align items horizontally */
+  }
+}
